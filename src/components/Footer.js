@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">Udemy Clone</h3>
+            <h3 className="text-lg font-semibold mb-4">Ga JAMI'A </h3>
             <p className="text-sm">
               Learn on your schedule, anywhere, anytime.
             </p>
@@ -71,9 +71,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-          <p className="text-sm">
-            &copy; 2023 Udemy Clone. All rights reserved.
-          </p>
+          <p className="text-sm">&copy; 2024 Ga JAMI'A. All rights reserved.</p>
         </div>
       </div>
     </footer>

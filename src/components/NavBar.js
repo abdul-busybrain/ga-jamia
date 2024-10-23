@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav className="bg-white shadow-md">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-purple-600">
-          Udemy Clone
+          Ga JAMI'A
         </Link>
         <div className="space-x-4">
           <Link to="/courses" className="text-gray-600 hover:text-purple-600">

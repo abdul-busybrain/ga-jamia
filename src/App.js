@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
 import CourseListing from "./components/CourseListing";
@@ -15,14 +15,14 @@ function App() {
       <div className="flex flex-col min-h-screen">
         <NavBar />
         <main className="flex-grow">
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/courses" component={CourseListing} />
-            <Route path="/course/:id" component={CourseDetails} />
-            <Route path="/login" component={LoginRegister} />
-            <Route path="/free-trial" component={FreeTrial} />
-            <Route path="/contact" component={ContactForm} />
-          </Switch>
+          <Routes>
+            <Route index path="/" element={<LandingPage />} />
+            <Route path="/courses" element={<CourseListing />} />
+            <Route path="/course/:id" element={<CourseDetails />} />
+            <Route path="/login" element={<LoginRegister />} />
+            <Route path="/free-trial" element={<FreeTrial />} />
+            <Route path="/contact" element={<ContactForm />} />
+          </Routes>
         </main>
         <Footer />
       </div>

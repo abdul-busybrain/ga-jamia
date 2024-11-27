@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useRoutes } from "react-router-dom";
+import {  Routes, Route,  } from "react-router-dom";
 
 import Header from "./ui/Header";
 import Hero from "./ui/Hero";
@@ -13,38 +13,9 @@ import PageNotFound from "./ui/PageNotFound";
 import NoCodeDev from "./pages/NoCodeDev";
 import PopularInstructors from "./ui/PopularInstructors";
 import NewsLetter from "./ui/NewsLetter";
-import FirebaseLogin from "./ui/FirebaseLogin";
-import FirebaseRegister from "./ui/FirebaseRegister";
-import FirebaseHome from "./ui/FirebaseHome";
-import { AuthProvider } from "./contexts/authContext";
-import FirebaseHeader from "./ui/FirebaseHeader";
 
 function App() {
-  const routesArray = [
-    {
-      path: "/login",
-      element: <FirebaseLogin />,
-    },
-    {
-      path: "/register",
-      element: <FirebaseRegister />,
-    },
-    {
-      path: "/homer",
-      element: <FirebaseHome />,
-    },
-  ];
 
-  let routesElement = useRoutes(routesArray);
-
-  return (
-    <AuthProvider>
-      <FirebaseHeader />
-      <div className="w-full h-screen flex flex-col">{routesElement}</div>
-    </AuthProvider>
-  );
-
-  /**
   return (
     <>
       <Header />
@@ -72,7 +43,6 @@ function App() {
       <PopularInstructors />
       <NewsLetter />
     </>
-  ); */
-}
+  ); }
 
 export default App;

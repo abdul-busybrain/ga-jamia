@@ -1,4 +1,4 @@
-import {  Routes, Route,  } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import Header from "./ui/Header";
 import Hero from "./ui/Hero";
@@ -13,36 +13,61 @@ import PageNotFound from "./ui/PageNotFound";
 import NoCodeDev from "./pages/NoCodeDev";
 import PopularInstructors from "./ui/PopularInstructors";
 import NewsLetter from "./ui/NewsLetter";
+import { AuthProvider, useAuth } from "./contexts/authContext";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./ui/Home";
+
+function PrivateRoutes() {
+  const { userLoggedIn } = useAuth();
+
+  return userLoggedIn ? <Outlet /> : <Navigate to={"/login"} replace />;
+}
 
 function App() {
-
   return (
     <>
-      <Header />
-      <Hero />
+      <AuthProvider>
+        <Header />
+        <Routes>
+          {/* Authentication Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-      <div className="min-h-screen bg-gray-50">
-        <Categories />
-        <main className="py-8">
-          <Routes>
-            <Route path="/courses" element={<AllCourses />} />
-            <Route path="/courses/product-design" element={<ProductDesign />} />
-            <Route path="/courses/frontend" element={<FrontendDev />} />
-            <Route path="/courses/backend" element={<BackendDev />} />
-            <Route path="/courses/mobile" element={<MobileDev />} />
-            <Route path="/courses/nocode" element={<NoCodeDev />} />
-            <Route
-              path="/courses/project-management"
-              element={<ProjectManagement />}
-            />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-      </div>
+          {/* Protected Routes */}
+          <Route element={<PrivateRoutes />} />
 
-      <PopularInstructors />
-      <NewsLetter />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+        <Hero />
+
+        <div className="min-h-screen bg-gray-50">
+          <Categories />
+          <main className="py-8">
+            <Routes>
+              <Route path="/courses" element={<AllCourses />} />
+              <Route
+                path="/courses/product-design"
+                element={<ProductDesign />}
+              />
+              <Route path="/courses/frontend" element={<FrontendDev />} />
+              <Route path="/courses/backend" element={<BackendDev />} />
+              <Route path="/courses/mobile" element={<MobileDev />} />
+              <Route path="/courses/nocode" element={<NoCodeDev />} />
+              <Route
+                path="/courses/project-management"
+                element={<ProjectManagement />}
+              />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </main>
+        </div>
+
+        <PopularInstructors />
+        <NewsLetter />
+      </AuthProvider>
     </>
-  ); }
+  );
+}
 
 export default App;

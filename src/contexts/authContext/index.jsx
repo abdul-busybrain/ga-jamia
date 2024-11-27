@@ -1,12 +1,12 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userLoggeIn, setUserLoggedIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(function () {
@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    userLoggeIn,
+    userLoggedIn,
     isLoading,
   };
 
@@ -37,3 +37,10 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined)
+    throw new Error("AuthContext was used outside of the AuthProvider.");
+  return context;
+};

@@ -16,7 +16,7 @@ function Categories() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <nav className="flex flex-nowrap gap-4 justify-between">
         <NavLink to="/courses" className={getLinkStyles} end>
-          All recommendations
+          All Recommendations
         </NavLink>
         <NavLink to="/courses/product-design" className={getLinkStyles}>
           Product Design

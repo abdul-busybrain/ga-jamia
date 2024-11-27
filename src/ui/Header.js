@@ -1,12 +1,18 @@
+import { useEffect, useState } from "react";
+import { HiShoppingCart } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+
+import { useAuth } from "../contexts/authContext";
+import { doSignOut } from "../firebase/auth";
 import Logo from "../ui/Logo";
 import BecomeInstructor from "./BecomeInstructor";
 import Search from "./Search";
 import Button from "./Button";
-import { useEffect, useState } from "react";
-import { HiShoppingCart } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+  const { userLoggedIn } = useAuth();
+
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(function () {
@@ -19,6 +25,16 @@ function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  const handleLogout = () => {
+    doSignOut().then(() => {
+      navigate("/login");
+    });
+  };
 
   return (
     <>
@@ -41,8 +57,21 @@ function Header() {
               <HiShoppingCart className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
 
               <div className="flex items-center gap-2">
-                <Button>Login </Button>
-                <Button variant="secondary">Register</Button>
+                {userLoggedIn ? (
+                  <Button onClick={handleLogout}>Logout</Button>
+                ) : (
+                  <>
+                    <Button onClick={() => handleNavigation("/login")}>
+                      Login
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => handleNavigation("/register")}
+                    >
+                      Register
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </div>

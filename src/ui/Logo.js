@@ -1,5 +1,11 @@
+import { NavLink } from "react-router-dom";
+
 function Logo() {
-  return <h1 className="text-2xl font-bold text-gray-800">ga jami'a</h1>;
+  return (
+    <NavLink to={"/"} className="text-2xl font-bold text-gray-800">
+      ga jami'a
+    </NavLink>
+  );
 }
 
 export default Logo;

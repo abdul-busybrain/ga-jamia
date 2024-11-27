@@ -13,11 +13,11 @@ export async function doCreateUserWithEmailAndPassword(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
 
-export const doSignInWIthEmailAndPassword = (email, password) => {
+export const doSignInWithEmailAndPassword = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-export const doSignWithGoogle = async () => {
+export const doSignInWithGoogle = async () => {
   const provider = GoogleAuthProvider();
   const result = await signInWithPopup(auth, provider);
   //   result.user
@@ -41,6 +41,6 @@ export const doPasswordChange = (password) => {
 
 export const doSendEmailVerification = () => {
   return sendEmailVerification(auth.currentUser, {
-    url: `${window.location.origin}/test-home`,
+    url: `${window.location.origin}/home`,
   });
 };

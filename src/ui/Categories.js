@@ -15,25 +15,25 @@ function Categories() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <nav className="flex flex-nowrap gap-4 justify-between">
-        <NavLink to="/" className={getLinkStyles} end>
+        <NavLink to="/courses" className={getLinkStyles} end>
           All recommendations
         </NavLink>
-        <NavLink to="/product-design" className={getLinkStyles}>
+        <NavLink to="/courses/product-design" className={getLinkStyles}>
           Product Design
         </NavLink>
-        <NavLink to="/frontend" className={getLinkStyles}>
+        <NavLink to="/courses/frontend" className={getLinkStyles}>
           Frontend Development
         </NavLink>
-        <NavLink to="/backend" className={getLinkStyles}>
+        <NavLink to="/courses/backend" className={getLinkStyles}>
           Backend Development
         </NavLink>
-        <NavLink to="/mobile" className={getLinkStyles}>
+        <NavLink to="/courses/mobile" className={getLinkStyles}>
           Mobile Development
         </NavLink>
-        <NavLink to="/nocode" className={getLinkStyles}>
+        <NavLink to="/courses/nocode" className={getLinkStyles}>
           No Code Development
         </NavLink>
-        <NavLink to="/project-management" className={getLinkStyles}>
+        <NavLink to="/courses/project-management" className={getLinkStyles}>
           Project Management
         </NavLink>
       </nav>

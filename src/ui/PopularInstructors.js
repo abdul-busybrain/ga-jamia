@@ -48,14 +48,14 @@ const instructors = [
   },
 ];
 
-const InstructorCard = ({ instructor }) => {
+function InstructorCard({ instructor }) {
   return (
     <div className="bg-white shadow-lg rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-105">
       <div className="relative">
         <img
           src={instructor.image}
           alt={instructor.name}
-          className="w-full h-64 object-cover"
+          className="w-full  object-cover object-top"
         />
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4 text-white">
           <h3 className="text-xl font-bold">{instructor.name}</h3>
@@ -85,7 +85,7 @@ const InstructorCard = ({ instructor }) => {
       </div>
     </div>
   );
-};
+}
 
 const PopularInstructors = () => {
   return (

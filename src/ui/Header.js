@@ -4,6 +4,7 @@ import Search from "./Search";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [isSticky, setIsSticky] = useState(false);
@@ -41,7 +42,7 @@ function Header() {
 
               <div className="flex items-center gap-2">
                 <Button>Login </Button>
-                <Button variant="secondary">Sign Up</Button>
+                <Button variant="secondary">Register</Button>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 function ProjectManagement() {
-  return <div>ProjectManagement</div>;
+  return <div>Project Management</div>;
 }
 
 export default ProjectManagement;

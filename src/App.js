@@ -14,8 +14,8 @@ import NoCodeDev from "./pages/NoCodeDev";
 import PopularInstructors from "./ui/PopularInstructors";
 import NewsLetter from "./ui/NewsLetter";
 import { AuthProvider, useAuth } from "./contexts/authContext";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Login from "./authentication/Login";
+import Register from "./authentication/Register";
 import Home from "./ui/Home";
 
 function PrivateRoutes() {

@@ -1,35 +1,27 @@
 import React, { useState } from "react";
-import { Navigate, Link, useNavigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import {
   doCreateUserWithEmailAndPassword,
   doSignInWithGoogle,
+  doSignOut,
 } from "../firebase/auth";
-import { auth } from "../firebase/firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const Register = () => {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
-  const [isSigningIn, setIsSigningIn] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const { userLoggedIn } = useAuth();
 
-  const [user] = useAuthState(auth);
-
   const onGoogleSignIn = async (e) => {
     e.preventDefault();
     if (!isRegistering) {
       setIsRegistering(true);
-      const provider = new GoogleAuthProvider();
       try {
-        await signInWithPopup(auth, provider);
+        doSignInWithGoogle();
       } catch (error) {
         console.error("Error signing in with Google:", error);
         setErrorMessage(error.message);
@@ -40,9 +32,10 @@ const Register = () => {
 
   const onSignOut = () => {
     try {
-      auth.signOut();
+      doSignOut();
     } catch (error) {
       console.error("Error signing out:", error);
+      setErrorMessage(error.message);
     }
   };
 

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
-import {
-  doSignInWithEmailAndPassword,
-  doSignInWithGoogle,
-} from "../firebase/auth";
+import { doSignInWithEmailAndPassword } from "../firebase/auth";
 import { useAuth } from "../contexts/authContext";
 
 const Login = () => {
@@ -18,18 +15,13 @@ const Login = () => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
-      await doSignInWithEmailAndPassword(email, password);
-      // doSendEmailVerification()
-    }
-  };
-
-  const onGoogleSignIn = (e) => {
-    e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      doSignInWithGoogle().catch((err) => {
+      try {
+        doSignInWithEmailAndPassword(email, password);
+      } catch (error) {
+        console.log("Error Login in with Email and Password:", error);
+        setErrorMessage(error.message);
         setIsSigningIn(false);
-      });
+      }
     }
   };
 

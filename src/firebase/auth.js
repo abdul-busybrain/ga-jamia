@@ -22,7 +22,7 @@ export const doSignInWithGoogle = async () => {
   const result = await signInWithPopup(auth, provider);
   //   result.user
   /**
-   * we can save the result to firestore using result.user
+   * We can save the result to firestore using result.user
    */
   return result;
 };
